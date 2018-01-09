@@ -3,6 +3,15 @@
 
 #include <cstring>
 #include <ctime>
+#include <chrono>
+#include <thread>
+
+using namespace std;
+
+int sleep(int ms)
+{
+  this_thread::sleep_for(chrono::milliseconds(ms));
+}
 
 char ctmcpy(char *tar, struct tm *td, int sz)
 {

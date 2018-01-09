@@ -1,13 +1,9 @@
 #include <iostream>
 #include <sstream>
-#include <ctime>
-#include <curses.h>
 #include <string>
-#include <thread>
-#include <chrono>
+#include <curses.h>
 #include "kbhit.h"
 #include "ptime.h"
-#define MST (-7)
 
 using namespace std;
 
@@ -19,8 +15,6 @@ int main()
 
   char ctm[hln], mon[els], wkd[els], yr[els], mnd[els], yd[els], ydl[els];
   time_t t = time(0);
-  char *timestr;
-  const char *hrtime, *mintime, *sectime;
   struct tm *today = localtime(&t);
   
   initscr();
@@ -56,7 +50,7 @@ int main()
       ydln2 = 365 - ydln;
       sprintf(ydl,"%d",ydln2);      
       
-      move(midy/2,midx/3);
+      move((midy/4)*7,midx/4);
       printw("DT:");
       printw(yd);
       printw("/");
@@ -78,7 +72,7 @@ int main()
       printw(ctm);
       
       refresh();
-      this_thread::sleep_for(chrono::milliseconds(150));
+      sleep(150);
       clear();
 
       if(kbhit())
