@@ -9,8 +9,6 @@ Here is an example of what it looks like:
 
 ## Usage
 
-g++ -o ctime ctime.cpp -lncurses
-
 ./ctime
 
 
