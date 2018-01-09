@@ -10,6 +10,7 @@ Here is an example of what it looks like:
 ## Usage
 
 g++ -o ctime ctime.cpp -lncurses
+
 ./ctime
 
 Please report any issues or bugs you may find by [creating an issue ticket] (https://github.com/astroshift/ctime/issues/new) here.
