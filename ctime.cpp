@@ -1,12 +1,12 @@
 #include <iostream>
 #include <sstream>
 #include <ctime>
-#include <cstring>
 #include <curses.h>
 #include <string>
 #include <thread>
 #include <chrono>
 #include "kbhit.h"
+#include "ptime.h"
 #define MST (-7)
 
 using namespace std;
@@ -14,8 +14,10 @@ using namespace std;
 int main()
 {
   int c,ch,ctml,maxx,maxy,midx,midy,ydln,ydln2;
+  int els = 10;
+  int hln = 25;
 
-  char ctm[25], mon[10], wkd[10], yr[10], mnd[10], yd[10], ydl[10];
+  char ctm[hln], mon[els], wkd[els], yr[els], mnd[els], yd[els], ydl[els];
   time_t t = time(0);
   char *timestr;
   const char *hrtime, *mintime, *sectime;
@@ -33,30 +35,33 @@ int main()
     {
       int sum = 0;
       curs_set(0);
+      box(stdscr,0,0);
       move(0,0);
       printw("Press q to exit");
       t = time(0);
       today = localtime(&t);
       
-      strftime(ctm, sizeof(ctm), "%r", today);
-      strftime(mon, sizeof(mon), "%B", today); //full month name
-      strftime(wkd, sizeof(wkd), "%A", today); //full weekday name
-      strftime(mnd, sizeof(mnd), "%d", today); //day of the month 
-      strftime(yr, sizeof(yr), "%Y", today); //current year into string
-      strftime(yd, sizeof(yd), "%j", today);
-           
+      ctmcpy(ctm,today,hln);
+      moncpy(mon,today,els);
+      wkdcpy(wkd,today,els);
+      mndcpy(mnd,today,els);
+      yrcpy(yr,today,els);
+      ydcpy(yd,today,els);
+   
       sum = ((strlen(mon) + strlen(wkd) + strlen(yr) + strlen(mnd) + 3)/2);
 
       stringstream geek(yd);
       geek >> ydln;
 
       ydln2 = 365 - ydln;
-      sprintf(ydl,"%d",ydln2);
+      sprintf(ydl,"%d",ydln2);      
       
       move(midy/2,midx/3);
+      printw("DT:");
       printw(yd);
       printw("/");
       printw(ydl);
+      printw(":DL");
       
       move(midy-1,midx-sum);
       printw(wkd);
