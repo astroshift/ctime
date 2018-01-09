@@ -6,8 +6,6 @@
 #include <string>
 #include <thread>
 #include <chrono>
-#include <termios.h>
-#include <sys/ioctl.h>
 #include "kbhit.h"
 #define MST (-7)
 
@@ -87,7 +85,6 @@ int main()
 	      break;
 	    }
 	}
-
       refresh();
     }
   clear();

@@ -1,6 +1,9 @@
 #ifndef KBHIT_H
 #define KBHIT_H
 
+#include <termios.h>
+#include <sys/ioctl.h>
+
 int kbhit()
 {
   static const int STDIN = 0;
