@@ -7,9 +7,6 @@ Here is an example of what it looks like:
 
 [![sample screenshot](https://i.imgur.com/3qvvJcb.png)](https://i.imgur.com/3qvvJcb.png)
 
-## Usage
-
-./ctime
 
 
 
